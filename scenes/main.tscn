@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fcw4gi8mytcp" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_terminal.svg" id="5_terminal_sprite"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_poster.svg" id="6_poster_sprite"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="7_enemy_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_wide"]
 size = Vector2(720, 24)
@@ -182,3 +183,11 @@ item_notes = "A faded safety notice says to report malfunctioning drones. Someon
 texture = ExtResource("6_poster_sprite")
 
 [node name="HUD" parent="." unique_id=1281451911 instance=ExtResource("4_hud_scene")]
+
+[node name="TestEnemies" type="Node2D" parent="."]
+
+[node name="NorthDoorDrone" parent="TestEnemies" instance=ExtResource("7_enemy_scene")]
+position = Vector2(0, -160)
+
+[node name="EastDoorDrone" parent="TestEnemies" instance=ExtResource("7_enemy_scene")]
+position = Vector2(305, -20)

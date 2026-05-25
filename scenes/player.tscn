@@ -10,7 +10,7 @@ radius = 15.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_interaction"]
 radius = 54.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_player_script")
 bullet_scene = ExtResource("3_bullet_scene")
 

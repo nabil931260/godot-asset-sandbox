@@ -45,3 +45,7 @@ Updated the default HUD copy so the room tells the player about Space to shoot. 
 ## 2026-05-25 - Room readability pass
 
 Adjusted the room colors so active doors stand out more and inactive doors fade back. Nudged the cover and props so the arena reads less like a test rectangle, and rewrote the prop text to feel more like a small survival room.
+
+## 2026-05-25 - First enemy pass
+
+Added a simple malfunctioning drone enemy and placed two test drones near the active doors. They chase the player and can be destroyed by the blaster, which gives the shooting pass something real to hit before the wave spawner exists.
