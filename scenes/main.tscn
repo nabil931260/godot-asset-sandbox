@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://assetsandboxmain"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main_script"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player_scene"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_wide"]
+size = Vector2(760, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_tall"]
+size = Vector2(24, 420)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main_script")
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_left = -400.0
+offset_top = -240.0
+offset_right = 400.0
+offset_bottom = 240.0
+color = Color(0.14, 0.16, 0.18, 1)
+
+[node name="GuideGrid" type="Node2D" parent="."]
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_wall_wide")
+
+[node name="TopWallVisual" type="ColorRect" parent="TopWall"]
+offset_left = -380.0
+offset_top = -12.0
+offset_right = 380.0
+offset_bottom = 12.0
+color = Color(0.31, 0.36, 0.42, 1)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_wall_wide")
+
+[node name="BottomWallVisual" type="ColorRect" parent="BottomWall"]
+offset_left = -380.0
+offset_top = -12.0
+offset_right = 380.0
+offset_bottom = 12.0
+color = Color(0.31, 0.36, 0.42, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-390, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_wall_tall")
+
+[node name="LeftWallVisual" type="ColorRect" parent="LeftWall"]
+offset_left = -12.0
+offset_top = -210.0
+offset_right = 12.0
+offset_bottom = 210.0
+color = Color(0.31, 0.36, 0.42, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(390, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_wall_tall")
+
+[node name="RightWallVisual" type="ColorRect" parent="RightWall"]
+offset_left = -12.0
+offset_top = -210.0
+offset_right = 12.0
+offset_bottom = 210.0
+color = Color(0.31, 0.36, 0.42, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player_scene")]
+position = Vector2(-250, 120)
