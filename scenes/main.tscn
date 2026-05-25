@@ -1,107 +1,187 @@
-[gd_scene load_steps=9 format=3 uid="uid://assetsandboxmain"]
+[gd_scene format=3 uid="uid://bhi8uhcefqu3v"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_main_script"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player_scene"]
-[ext_resource type="PackedScene" path="res://scenes/interactable_item.tscn" id="3_item_scene"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
+[ext_resource type="Script" uid="uid://73y8iqata6fu" path="res://scripts/main.gd" id="1_main_script"]
+[ext_resource type="PackedScene" uid="uid://bcd74wfuxal1v" path="res://scenes/player.tscn" id="2_player_scene"]
+[ext_resource type="PackedScene" uid="uid://b3y26pfe248c" path="res://scenes/interactable_item.tscn" id="3_item_scene"]
+[ext_resource type="PackedScene" uid="uid://fcw4gi8mytcp" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_terminal.svg" id="5_terminal_sprite"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_poster.svg" id="6_poster_sprite"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_wide"]
-size = Vector2(760, 24)
+size = Vector2(720, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_tall"]
-size = Vector2(24, 420)
+size = Vector2(24, 380)
 
-[node name="Main" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(86, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cover_wide"]
+size = Vector2(120, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cover_tall"]
+size = Vector2(34, 100)
+
+[node name="Main" type="Node2D" unique_id=608708269]
 script = ExtResource("1_main_script")
 
-[node name="Floor" type="ColorRect" parent="."]
+[node name="Floor" type="ColorRect" parent="." unique_id=918516214]
 offset_left = -400.0
 offset_top = -240.0
 offset_right = 400.0
 offset_bottom = 240.0
-color = Color(0.14, 0.16, 0.18, 1)
+color = Color(0.115, 0.12, 0.13, 1)
 
-[node name="GuideGrid" type="Node2D" parent="."]
+[node name="GuideGrid" type="Node2D" parent="." unique_id=1709047122]
 
-[node name="TopWall" type="StaticBody2D" parent="."]
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=1846614857]
 position = Vector2(0, -220)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=619060624]
 shape = SubResource("RectangleShape2D_wall_wide")
 
-[node name="TopWallVisual" type="ColorRect" parent="TopWall"]
-offset_left = -380.0
+[node name="TopWallVisual" type="ColorRect" parent="TopWall" unique_id=1406627814]
+offset_left = -360.0
 offset_top = -12.0
-offset_right = 380.0
+offset_right = 360.0
 offset_bottom = 12.0
 color = Color(0.31, 0.36, 0.42, 1)
 
-[node name="BottomWall" type="StaticBody2D" parent="."]
+[node name="BottomWall" type="StaticBody2D" parent="." unique_id=55015333]
 position = Vector2(0, 220)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall" unique_id=1217762666]
 shape = SubResource("RectangleShape2D_wall_wide")
 
-[node name="BottomWallVisual" type="ColorRect" parent="BottomWall"]
-offset_left = -380.0
+[node name="BottomWallVisual" type="ColorRect" parent="BottomWall" unique_id=1219164132]
+offset_left = -360.0
 offset_top = -12.0
-offset_right = 380.0
+offset_right = 360.0
 offset_bottom = 12.0
 color = Color(0.31, 0.36, 0.42, 1)
 
-[node name="LeftWall" type="StaticBody2D" parent="."]
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1865680195]
 position = Vector2(-390, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1707731489]
 shape = SubResource("RectangleShape2D_wall_tall")
 
-[node name="LeftWallVisual" type="ColorRect" parent="LeftWall"]
+[node name="LeftWallVisual" type="ColorRect" parent="LeftWall" unique_id=1022468861]
 offset_left = -12.0
-offset_top = -210.0
+offset_top = -190.0
 offset_right = 12.0
-offset_bottom = 210.0
+offset_bottom = 190.0
 color = Color(0.31, 0.36, 0.42, 1)
 
-[node name="RightWall" type="StaticBody2D" parent="."]
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=247126456]
 position = Vector2(390, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1091689913]
 shape = SubResource("RectangleShape2D_wall_tall")
 
-[node name="RightWallVisual" type="ColorRect" parent="RightWall"]
+[node name="RightWallVisual" type="ColorRect" parent="RightWall" unique_id=151037749]
 offset_left = -12.0
-offset_top = -210.0
+offset_top = -190.0
 offset_right = 12.0
-offset_bottom = 210.0
+offset_bottom = 190.0
 color = Color(0.31, 0.36, 0.42, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_player_scene")]
-position = Vector2(-250, 120)
+[node name="Doors" type="Node2D" parent="."]
 
-[node name="CrateAsset" parent="." instance=ExtResource("3_item_scene")]
-position = Vector2(-110, -72)
-item_title = "Workshop Crate"
-item_type = "Prop"
-item_notes = "Simple collision object used to check reusable scene instancing and exported metadata."
+[node name="NorthDoor" type="Marker2D" parent="Doors"]
+position = Vector2(0, -219)
 
-[node name="TerminalAsset" parent="." instance=ExtResource("3_item_scene")]
-position = Vector2(150, -40)
-item_title = "Status Terminal"
+[node name="DoorVisual" type="ColorRect" parent="Doors/NorthDoor"]
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+color = Color(0.64, 0.17, 0.17, 1)
+
+[node name="EastDoor" type="Marker2D" parent="Doors"]
+position = Vector2(389, -20)
+rotation = 1.5708
+
+[node name="DoorVisual" type="ColorRect" parent="Doors/EastDoor"]
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+color = Color(0.64, 0.17, 0.17, 1)
+
+[node name="SouthDoorReserved" type="Marker2D" parent="Doors"]
+position = Vector2(0, 219)
+
+[node name="DoorVisual" type="ColorRect" parent="Doors/SouthDoorReserved"]
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+color = Color(0.25, 0.28, 0.31, 1)
+
+[node name="WestDoorReserved" type="Marker2D" parent="Doors"]
+position = Vector2(-389, -20)
+rotation = 1.5708
+
+[node name="DoorVisual" type="ColorRect" parent="Doors/WestDoorReserved"]
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+color = Color(0.25, 0.28, 0.31, 1)
+
+[node name="Cover" type="Node2D" parent="."]
+
+[node name="Workbench" type="StaticBody2D" parent="Cover"]
+position = Vector2(-95, 55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cover/Workbench"]
+shape = SubResource("RectangleShape2D_cover_wide")
+
+[node name="Visual" type="ColorRect" parent="Cover/Workbench"]
+offset_left = -60.0
+offset_top = -17.0
+offset_right = 60.0
+offset_bottom = 17.0
+color = Color(0.35, 0.29, 0.22, 1)
+
+[node name="ToolRack" type="StaticBody2D" parent="Cover"]
+position = Vector2(85, -105)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cover/ToolRack"]
+shape = SubResource("RectangleShape2D_cover_tall")
+
+[node name="Visual" type="ColorRect" parent="Cover/ToolRack"]
+offset_left = -17.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = 50.0
+color = Color(0.24, 0.32, 0.39, 1)
+
+[node name="Player" parent="." unique_id=1858791799 instance=ExtResource("2_player_scene")]
+position = Vector2(-240, 110)
+
+[node name="CrateAsset" parent="." unique_id=1267026935 instance=ExtResource("3_item_scene")]
+position = Vector2(-220, -95)
+item_title = "Emergency Supply Crate"
+item_notes = "Stamped with faded hazard tape. Most of the useful parts are gone, but the reinforced lid still makes decent cover."
+
+[node name="TerminalAsset" parent="." unique_id=1042485667 instance=ExtResource("3_item_scene")]
+position = Vector2(205, -85)
+item_title = "Room Control Terminal"
 item_type = "Interactive Prop"
-item_notes = "Uses the same base interactable scene with a different sprite and notes."
+item_notes = "The diagnostic screen loops the same warning: EXTERNAL LOCKDOWN ACTIVE. Someone sealed this room before the breach."
 
 [node name="Sprite2D" parent="TerminalAsset" index="0"]
 texture = ExtResource("5_terminal_sprite")
 
-[node name="PosterAsset" parent="." instance=ExtResource("3_item_scene")]
-position = Vector2(210, 120)
-item_title = "Layout Poster"
+[node name="PosterAsset" parent="." unique_id=1008049608 instance=ExtResource("3_item_scene")]
+position = Vector2(230, 125)
+item_title = "Safety Poster"
 item_type = "Reference"
-item_notes = "A small visual marker for practicing asset placement and HUD detail copy."
+item_notes = "A cheerful reminder to report malfunctioning drones. Someone crossed out report and wrote run."
 
 [node name="Sprite2D" parent="PosterAsset" index="0"]
 texture = ExtResource("6_poster_sprite")
 
-[node name="HUD" parent="." instance=ExtResource("4_hud_scene")]
+[node name="HUD" parent="." unique_id=1281451911 instance=ExtResource("4_hud_scene")]

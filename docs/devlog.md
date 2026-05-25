@@ -25,3 +25,7 @@ Expanded the README with controls, practiced concepts, and manual verification s
 Decided to turn the sandbox into a small single-room survival game. This should make the project more interesting while still keeping it realistic for a refresher repo. The new direction is a workshop holdout: enemies enter through doors, the player shoots with Space, and the existing props become part of the room fiction.
 
 I am saving the terminal upgrade idea for later. It makes sense as an upgrade station, but only after the basic movement, shooting, enemy, wave, and health loops work.
+
+## 2026-05-25 - Arena pass
+
+Started shaping the sandbox into a holdout room. Added two active door markers, two reserved door positions for later waves, and a couple of cover pieces so the room is not just an empty rectangle. I also rewrote the object descriptions so the crate, terminal, and poster read more like actual room props.
