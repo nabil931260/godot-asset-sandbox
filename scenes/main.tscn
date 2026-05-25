@@ -27,7 +27,7 @@ offset_left = -400.0
 offset_top = -240.0
 offset_right = 400.0
 offset_bottom = 240.0
-color = Color(0.115, 0.12, 0.13, 1)
+color = Color(0.105, 0.115, 0.125, 1)
 
 [node name="GuideGrid" type="Node2D" parent="." unique_id=1709047122]
 
@@ -42,7 +42,7 @@ offset_left = -360.0
 offset_top = -12.0
 offset_right = 360.0
 offset_bottom = 12.0
-color = Color(0.31, 0.36, 0.42, 1)
+color = Color(0.23, 0.28, 0.34, 1)
 
 [node name="BottomWall" type="StaticBody2D" parent="." unique_id=55015333]
 position = Vector2(0, 220)
@@ -55,7 +55,7 @@ offset_left = -360.0
 offset_top = -12.0
 offset_right = 360.0
 offset_bottom = 12.0
-color = Color(0.31, 0.36, 0.42, 1)
+color = Color(0.23, 0.28, 0.34, 1)
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=1865680195]
 position = Vector2(-390, 0)
@@ -68,7 +68,7 @@ offset_left = -12.0
 offset_top = -190.0
 offset_right = 12.0
 offset_bottom = 190.0
-color = Color(0.31, 0.36, 0.42, 1)
+color = Color(0.23, 0.28, 0.34, 1)
 
 [node name="RightWall" type="StaticBody2D" parent="." unique_id=247126456]
 position = Vector2(390, 0)
@@ -81,7 +81,7 @@ offset_left = -12.0
 offset_top = -190.0
 offset_right = 12.0
 offset_bottom = 190.0
-color = Color(0.31, 0.36, 0.42, 1)
+color = Color(0.23, 0.28, 0.34, 1)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1467887776]
 
@@ -93,7 +93,7 @@ offset_left = -43.0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 13.0
-color = Color(0.64, 0.17, 0.17, 1)
+color = Color(0.78, 0.2, 0.16, 1)
 
 [node name="EastDoor" type="Marker2D" parent="Doors" unique_id=531401920]
 position = Vector2(389, -20)
@@ -104,7 +104,7 @@ offset_left = -43.0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 13.0
-color = Color(0.64, 0.17, 0.17, 1)
+color = Color(0.78, 0.2, 0.16, 1)
 
 [node name="SouthDoorReserved" type="Marker2D" parent="Doors" unique_id=877341613]
 position = Vector2(0, 219)
@@ -114,7 +114,7 @@ offset_left = -43.0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 13.0
-color = Color(0.25, 0.28, 0.31, 1)
+color = Color(0.17, 0.2, 0.23, 1)
 
 [node name="WestDoorReserved" type="Marker2D" parent="Doors" unique_id=1496319707]
 position = Vector2(-389, -20)
@@ -125,12 +125,12 @@ offset_left = -43.0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 13.0
-color = Color(0.25, 0.28, 0.31, 1)
+color = Color(0.17, 0.2, 0.23, 1)
 
 [node name="Cover" type="Node2D" parent="." unique_id=986344384]
 
 [node name="Workbench" type="StaticBody2D" parent="Cover" unique_id=633427685]
-position = Vector2(-95, 55)
+position = Vector2(-80, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cover/Workbench" unique_id=766619871]
 shape = SubResource("RectangleShape2D_cover_wide")
@@ -140,10 +140,10 @@ offset_left = -60.0
 offset_top = -17.0
 offset_right = 60.0
 offset_bottom = 17.0
-color = Color(0.35, 0.29, 0.22, 1)
+color = Color(0.39, 0.31, 0.22, 1)
 
 [node name="ToolRack" type="StaticBody2D" parent="Cover" unique_id=1578223613]
-position = Vector2(85, -105)
+position = Vector2(120, -105)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cover/ToolRack" unique_id=147731214]
 shape = SubResource("RectangleShape2D_cover_tall")
@@ -153,30 +153,30 @@ offset_left = -17.0
 offset_top = -50.0
 offset_right = 17.0
 offset_bottom = 50.0
-color = Color(0.24, 0.32, 0.39, 1)
+color = Color(0.18, 0.31, 0.42, 1)
 
 [node name="Player" parent="." unique_id=1858791799 instance=ExtResource("2_player_scene")]
 position = Vector2(-240, 110)
 
 [node name="CrateAsset" parent="." unique_id=1267026935 instance=ExtResource("3_item_scene")]
-position = Vector2(-220, -95)
+position = Vector2(-235, -90)
 item_title = "Emergency Supply Crate"
-item_notes = "Stamped with faded hazard tape. Most of the useful parts are gone, but the reinforced lid still makes decent cover."
+item_notes = "The latch is bent and the good supplies are gone. The reinforced lid still looks strong enough to hide behind when the doors open."
 
 [node name="TerminalAsset" parent="." unique_id=1042485667 instance=ExtResource("3_item_scene")]
-position = Vector2(205, -85)
+position = Vector2(230, -92)
 item_title = "Room Control Terminal"
 item_type = "Interactive Prop"
-item_notes = "The diagnostic screen loops the same warning: EXTERNAL LOCKDOWN ACTIVE. Someone sealed this room before the breach."
+item_notes = "The screen keeps flashing EXTERNAL LOCKDOWN ACTIVE. The upgrade menu is still locked, but the wiring looks salvageable."
 
 [node name="Sprite2D" parent="TerminalAsset" index="0"]
 texture = ExtResource("5_terminal_sprite")
 
 [node name="PosterAsset" parent="." unique_id=1008049608 instance=ExtResource("3_item_scene")]
-position = Vector2(230, 125)
+position = Vector2(255, 125)
 item_title = "Safety Poster"
 item_type = "Reference"
-item_notes = "A cheerful reminder to report malfunctioning drones. Someone crossed out report and wrote run."
+item_notes = "A faded safety notice says to report malfunctioning drones. Someone crossed out report and wrote run."
 
 [node name="Sprite2D" parent="PosterAsset" index="0"]
 texture = ExtResource("6_poster_sprite")

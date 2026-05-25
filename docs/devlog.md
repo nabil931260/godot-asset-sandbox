@@ -41,3 +41,7 @@ Tuned the first weapon pass. Bullets are faster and shaped more like small energ
 ## 2026-05-25 - HUD control text
 
 Updated the default HUD copy so the room tells the player about Space to shoot. The inspect prompt is shorter now too, which should leave more room once wave and health text land.
+
+## 2026-05-25 - Room readability pass
+
+Adjusted the room colors so active doors stand out more and inactive doors fade back. Nudged the cover and props so the arena reads less like a test rectangle, and rewrote the prop text to feel more like a small survival room.
