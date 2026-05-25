@@ -21,6 +21,19 @@ grow_vertical = 0
 text = "E: inspect"
 horizontal_alignment = 1
 
+[node name="WaveLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 18.0
+offset_right = 130.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Wave --    Drones --"
+horizontal_alignment = 1
+
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 3
 anchor_left = 1.0

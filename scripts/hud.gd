@@ -4,10 +4,12 @@ extends CanvasLayer
 @onready var title_label: Label = %TitleLabel
 @onready var type_label: Label = %TypeLabel
 @onready var notes_label: Label = %NotesLabel
+@onready var wave_label: Label = %WaveLabel
 
 func _ready() -> void:
 	hide_prompt()
 	show_item_details({})
+	update_wave_status(0, 0)
 
 func show_prompt(item) -> void:
 	if item == null:
@@ -31,3 +33,10 @@ func show_item_details(data: Dictionary) -> void:
 	title_label.text = data.get("title", "Untitled Asset")
 	type_label.text = "Type: %s" % data.get("type", "Unknown")
 	notes_label.text = data.get("notes", "")
+
+func update_wave_status(wave_number: int, enemies_remaining: int) -> void:
+	if wave_number <= 0:
+		wave_label.text = "Wave --    Drones --"
+		return
+
+	wave_label.text = "Wave %d    Drones %d" % [wave_number, enemies_remaining]

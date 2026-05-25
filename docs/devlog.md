@@ -49,3 +49,7 @@ Adjusted the room colors so active doors stand out more and inactive doors fade 
 ## 2026-05-25 - First enemy pass
 
 Added a simple malfunctioning drone enemy and placed two test drones near the active doors. They chase the player and can be destroyed by the blaster, which gives the shooting pass something real to hit before the wave spawner exists.
+
+## 2026-05-25 - First wave spawner
+
+Replaced the hand-placed test drones with a tiny wave loop. Waves start automatically, spawn drones from the active doors, and advance after the room is cleared. The HUD now shows the current wave and remaining drones.
