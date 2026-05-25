@@ -14,7 +14,7 @@ func show_prompt(item) -> void:
 		hide_prompt()
 		return
 
-	var data := item.get_display_data()
+	var data: Dictionary = item.get_display_data()
 	prompt_label.text = "Press E to inspect %s" % data.get("title", "asset")
 	prompt_label.visible = true
 
