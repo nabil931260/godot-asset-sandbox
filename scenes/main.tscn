@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://assetsandboxmain"]
+[gd_scene load_steps=9 format=3 uid="uid://assetsandboxmain"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main_script"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player_scene"]
+[ext_resource type="PackedScene" path="res://scenes/interactable_item.tscn" id="3_item_scene"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
+[ext_resource type="Texture2D" path="res://assets/sprites/item_terminal.svg" id="5_terminal_sprite"]
+[ext_resource type="Texture2D" path="res://assets/sprites/item_poster.svg" id="6_poster_sprite"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_wide"]
 size = Vector2(760, 24)
@@ -75,3 +79,29 @@ color = Color(0.31, 0.36, 0.42, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_player_scene")]
 position = Vector2(-250, 120)
+
+[node name="CrateAsset" parent="." instance=ExtResource("3_item_scene")]
+position = Vector2(-110, -72)
+item_title = "Workshop Crate"
+item_type = "Prop"
+item_notes = "Simple collision object used to check reusable scene instancing and exported metadata."
+
+[node name="TerminalAsset" parent="." instance=ExtResource("3_item_scene")]
+position = Vector2(150, -40)
+item_title = "Status Terminal"
+item_type = "Interactive Prop"
+item_notes = "Uses the same base interactable scene with a different sprite and notes."
+
+[node name="Sprite2D" parent="TerminalAsset" index="0"]
+texture = ExtResource("5_terminal_sprite")
+
+[node name="PosterAsset" parent="." instance=ExtResource("3_item_scene")]
+position = Vector2(210, 120)
+item_title = "Layout Poster"
+item_type = "Reference"
+item_notes = "A small visual marker for practicing asset placement and HUD detail copy."
+
+[node name="Sprite2D" parent="PosterAsset" index="0"]
+texture = ExtResource("6_poster_sprite")
+
+[node name="HUD" parent="." instance=ExtResource("4_hud_scene")]
