@@ -4,15 +4,34 @@ A compact Godot 4 refresher project focused on practicing scene composition, inp
 
 This is a sandbox, not a full game. I kept the scope small so the engine workflow stays visible and easy to review.
 
-## Current Status
+## What It Does
 
-The project is being built in small passes:
+The scene is a small top-down workshop/gallery. The player can move around, approach a few objects, and press `E` to inspect them. Each object uses the same reusable interactable scene with different exported metadata and simple placeholder art.
 
-- Project framing and implementation plan
-- Godot project scaffold
-- Player movement and base scene
-- Interactable assets and HUD feedback
-- Documentation and verification notes
+## Controls
+
+- `WASD` or arrow keys: move
+- `E`: inspect the focused asset
+
+## Practiced Concepts
+
+- Godot scene composition with instanced scenes
+- `CharacterBody2D` movement and collision
+- `Area2D`-based interaction detection
+- Exported GDScript properties for per-instance metadata
+- Signal wiring between player, main scene, and HUD
+- Basic `CanvasLayer` HUD layout
+- Small original SVG placeholder assets
+
+## Project Structure
+
+```text
+assets/sprites/       Simple original SVG placeholders
+docs/                 Devlog and next-step notes
+scenes/               Godot scene files
+scenes/ui/            HUD scene
+scripts/              Focused GDScript files
+```
 
 ## Requirements
 
@@ -21,3 +40,15 @@ The project is being built in small passes:
 ## Run
 
 Open this folder in Godot and run `scenes/main.tscn`.
+
+## Manual Verification
+
+- Project opens in Godot 4.
+- `scenes/main.tscn` runs without script errors.
+- Player moves with WASD or arrow keys.
+- A prompt appears when the player approaches an item.
+- Pressing `E` updates the HUD with item details.
+
+## Notes
+
+This repo is intentionally modest. I wanted the project to show the kind of engine work I was reviewing rather than hide it behind a larger game loop.
