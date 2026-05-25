@@ -14,6 +14,15 @@ These are small improvements I would make if I kept extending the refresher.
 - Add a light outline or highlight to the focused object.
 - Add a second interaction type, such as toggling a terminal state.
 
+## Gameplay Loop
+
+- Turn the room into a small holdout arena with two doors first, then leave space for four.
+- Add a player projectile fired with `Space`.
+- Add one enemy type that chases the player.
+- Add waves that start small and grow gradually.
+- Add player health, contact damage, and a game over state.
+- Turn the room terminal into a simple upgrade station after the combat loop works.
+
 ## Packaging
 
 - Add an export preset after testing on a clean Godot install.

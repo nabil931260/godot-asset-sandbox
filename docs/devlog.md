@@ -19,3 +19,9 @@ Added a reusable interactable item scene, three small SVG object markers, and a 
 ## 2026-05-25 - Documentation pass
 
 Expanded the README with controls, practiced concepts, and manual verification steps. Added next-step notes separately so the main README does not pretend the project is more finished than it is.
+
+## 2026-05-25 - Direction change
+
+Decided to turn the sandbox into a small single-room survival game. This should make the project more interesting while still keeping it realistic for a refresher repo. The new direction is a workshop holdout: enemies enter through doors, the player shoots with Space, and the existing props become part of the room fiction.
+
+I am saving the terminal upgrade idea for later. It makes sense as an upgrade station, but only after the basic movement, shooting, enemy, wave, and health loops work.
