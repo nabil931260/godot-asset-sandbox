@@ -33,3 +33,7 @@ Started shaping the sandbox into a holdout room. Added two active door markers, 
 ## 2026-05-25 - Shooting pass
 
 Added the first version of the player weapon. Space fires a small projectile from a muzzle marker in the player's current facing direction. There is a short cooldown so it feels like a simple blaster instead of a debug button.
+
+## 2026-05-25 - Shooting feel pass
+
+Tuned the first weapon pass. Bullets are faster and shaped more like small energy bolts, the starting aim now matches the player's idle facing direction, and firing shows a quick muzzle flash so the shot reads better even before enemies are in.

@@ -6,12 +6,15 @@ signal interacted_with_item(item)
 @export var speed: float = 180.0
 @export var bullet_scene: PackedScene
 @export var fire_cooldown: float = 0.22
+@export var muzzle_flash_time: float = 0.07
 
 var _focused_item: Node = null
-var _aim_direction: Vector2 = Vector2.RIGHT
+var _aim_direction: Vector2 = Vector2.UP
 var _cooldown_remaining: float = 0.0
+var _flash_remaining: float = 0.0
 
 @onready var muzzle: Marker2D = $Muzzle
+@onready var muzzle_flash: Polygon2D = $Muzzle/MuzzleFlash
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		rotation = direction.angle() + PI / 2.0
 
 	_cooldown_remaining = maxf(_cooldown_remaining - delta, 0.0)
+	_update_muzzle_flash(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and _focused_item != null:
@@ -55,4 +59,16 @@ func _try_fire() -> void:
 	var bullet := bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.setup(muzzle.global_position, _aim_direction)
+	_show_muzzle_flash()
 	_cooldown_remaining = fire_cooldown
+
+func _show_muzzle_flash() -> void:
+	muzzle_flash.visible = true
+	_flash_remaining = muzzle_flash_time
+
+func _update_muzzle_flash(delta: float) -> void:
+	if _flash_remaining <= 0.0:
+		return
+
+	_flash_remaining = maxf(_flash_remaining - delta, 0.0)
+	muzzle_flash.visible = _flash_remaining > 0.0

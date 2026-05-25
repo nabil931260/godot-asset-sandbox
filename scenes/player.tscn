@@ -29,6 +29,12 @@ enabled = true
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(0, -26)
 
+[node name="MuzzleFlash" type="Polygon2D" parent="Muzzle"]
+visible = false
+position = Vector2(0, -8)
+color = Color(1, 0.74, 0.18, 1)
+polygon = PackedVector2Array(0, -16, 5, -4, 17, 0, 5, 4, 0, 16, -5, 4, -17, 0, -5, -4)
+
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
