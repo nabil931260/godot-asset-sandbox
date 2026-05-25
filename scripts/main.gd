@@ -152,16 +152,20 @@ func _try_buy_upgrade(upgrade_name: String) -> void:
 	var costs := _get_upgrade_costs()
 	var cost: int = costs.get(upgrade_name, 999)
 	if _scrap < cost:
+		hud.show_status("Not enough scrap")
 		_show_upgrade_terminal()
 		return
 
 	_scrap -= cost
 	if upgrade_name == "weapon":
 		player.upgrade_weapon_damage()
+		hud.show_status("Weapon charge upgraded")
 	elif upgrade_name == "fire_rate":
 		player.upgrade_fire_rate()
+		hud.show_status("Blaster cycle upgraded")
 	elif upgrade_name == "hull":
 		player.upgrade_hull()
+		hud.show_status("Hull plating upgraded")
 
 	hud.update_scrap(_scrap)
 	_show_upgrade_terminal()

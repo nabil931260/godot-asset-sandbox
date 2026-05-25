@@ -65,3 +65,7 @@ Turned the room terminal into a small upgrade station. Clearing waves now pays s
 ## 2026-05-25 - Restart after failure
 
 Added a small restart flow so the game-over screen is not a dead end. When the player loses the room, pressing R reloads the current scene.
+
+## 2026-05-25 - Feedback pass
+
+Added small feedback touches: the HUD now reports upgrade purchases or missing scrap, the player flashes when hit, and drones flash when damaged. This makes the existing combat and terminal loops easier to read without adding a new system.

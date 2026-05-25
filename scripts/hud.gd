@@ -8,6 +8,9 @@ extends CanvasLayer
 @onready var health_label: Label = %HealthLabel
 @onready var game_over_label: Label = %GameOverLabel
 @onready var scrap_label: Label = %ScrapLabel
+@onready var status_label: Label = %StatusLabel
+
+var _status_time_remaining: float = 0.0
 
 func _ready() -> void:
 	hide_prompt()
@@ -15,7 +18,16 @@ func _ready() -> void:
 	update_wave_status(0, 0)
 	update_health(0, 0)
 	update_scrap(0)
+	show_status("")
 	show_game_over(false)
+
+func _process(delta: float) -> void:
+	if _status_time_remaining <= 0.0:
+		return
+
+	_status_time_remaining = maxf(_status_time_remaining - delta, 0.0)
+	if _status_time_remaining == 0.0:
+		status_label.text = ""
 
 func show_prompt(item) -> void:
 	if item == null:
@@ -65,6 +77,10 @@ func update_health(current_health: int, max_health: int) -> void:
 
 func update_scrap(scrap: int) -> void:
 	scrap_label.text = "Scrap %d" % scrap
+
+func show_status(message: String, duration: float = 1.2) -> void:
+	status_label.text = message
+	_status_time_remaining = duration if not message.is_empty() else 0.0
 
 func show_game_over(should_show: bool) -> void:
 	game_over_label.visible = should_show

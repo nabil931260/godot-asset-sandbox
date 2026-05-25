@@ -12,14 +12,17 @@ signal defeated
 @export var max_health: int = 5
 @export var damage_cooldown: float = 0.75
 @export var weapon_damage: int = 1
+@export var damage_flash_time: float = 0.12
 
 var _focused_item: Node = null
 var _aim_direction: Vector2 = Vector2.UP
 var _cooldown_remaining: float = 0.0
 var _flash_remaining: float = 0.0
 var _damage_cooldown_remaining: float = 0.0
+var _damage_flash_remaining: float = 0.0
 var _current_health: int
 
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var muzzle_flash: Polygon2D = $Muzzle/MuzzleFlash
 
@@ -39,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	_cooldown_remaining = maxf(_cooldown_remaining - delta, 0.0)
 	_damage_cooldown_remaining = maxf(_damage_cooldown_remaining - delta, 0.0)
 	_update_muzzle_flash(delta)
+	_update_damage_flash(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and _focused_item != null:
@@ -81,6 +85,7 @@ func take_damage(amount: int) -> void:
 
 	_current_health = maxi(_current_health - amount, 0)
 	_damage_cooldown_remaining = damage_cooldown
+	_show_damage_flash()
 	health_changed.emit(_current_health, max_health)
 
 	if _current_health == 0:
@@ -108,3 +113,15 @@ func _update_muzzle_flash(delta: float) -> void:
 
 	_flash_remaining = maxf(_flash_remaining - delta, 0.0)
 	muzzle_flash.visible = _flash_remaining > 0.0
+
+func _show_damage_flash() -> void:
+	sprite.modulate = Color(1, 0.45, 0.45, 1)
+	_damage_flash_remaining = damage_flash_time
+
+func _update_damage_flash(delta: float) -> void:
+	if _damage_flash_remaining <= 0.0:
+		return
+
+	_damage_flash_remaining = maxf(_damage_flash_remaining - delta, 0.0)
+	if _damage_flash_remaining == 0.0:
+		sprite.modulate = Color(1, 1, 1, 1)
