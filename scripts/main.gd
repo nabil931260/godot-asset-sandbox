@@ -18,14 +18,17 @@ var _spawn_timer: float = 0.0
 var _wave_break_timer: float = 0.0
 var _next_door_index: int = 0
 var _wave_active: bool = false
+var _game_over: bool = false
 
 func _ready() -> void:
 	player.focused_item_changed.connect(_on_player_focused_item_changed)
 	player.interacted_with_item.connect(_on_player_interacted_with_item)
+	player.health_changed.connect(_on_player_health_changed)
+	player.defeated.connect(_on_player_defeated)
 	_start_next_wave()
 
 func _process(delta: float) -> void:
-	if enemy_scene == null:
+	if enemy_scene == null or _game_over:
 		return
 
 	if _wave_active:
@@ -49,7 +52,18 @@ func _on_player_interacted_with_item(item) -> void:
 
 	hud.show_item_details(item.get_display_data())
 
+func _on_player_health_changed(current_health: int, max_health: int) -> void:
+	hud.update_health(current_health, max_health)
+
+func _on_player_defeated() -> void:
+	_game_over = true
+	_wave_active = false
+	hud.show_game_over(true)
+
 func _start_next_wave() -> void:
+	if _game_over:
+		return
+
 	_wave_number += 1
 	_spawns_remaining = _get_wave_size(_wave_number)
 	_enemies_remaining = _spawns_remaining
@@ -71,6 +85,9 @@ func _update_spawning(delta: float) -> void:
 	_spawn_timer = time_between_spawns
 
 func _spawn_enemy() -> void:
+	if _game_over:
+		return
+
 	var door := active_doors[_next_door_index % active_doors.size()]
 	_next_door_index += 1
 

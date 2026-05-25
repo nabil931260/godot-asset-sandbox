@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 95.0
 @export var max_health: int = 2
+@export var contact_damage: int = 1
 
 var _health: int
 var _target: Node2D
@@ -28,3 +29,7 @@ func take_damage(amount: int) -> void:
 
 	if _health <= 0:
 		queue_free()
+
+func _on_contact_area_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(contact_damage)

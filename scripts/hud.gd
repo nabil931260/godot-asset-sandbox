@@ -5,11 +5,15 @@ extends CanvasLayer
 @onready var type_label: Label = %TypeLabel
 @onready var notes_label: Label = %NotesLabel
 @onready var wave_label: Label = %WaveLabel
+@onready var health_label: Label = %HealthLabel
+@onready var game_over_label: Label = %GameOverLabel
 
 func _ready() -> void:
 	hide_prompt()
 	show_item_details({})
 	update_wave_status(0, 0)
+	update_health(0, 0)
+	show_game_over(false)
 
 func show_prompt(item) -> void:
 	if item == null:
@@ -40,3 +44,13 @@ func update_wave_status(wave_number: int, enemies_remaining: int) -> void:
 		return
 
 	wave_label.text = "Wave %d    Drones %d" % [wave_number, enemies_remaining]
+
+func update_health(current_health: int, max_health: int) -> void:
+	if max_health <= 0:
+		health_label.text = "Hull --/--"
+		return
+
+	health_label.text = "Hull %d/%d" % [current_health, max_health]
+
+func show_game_over(is_visible: bool) -> void:
+	game_over_label.visible = is_visible

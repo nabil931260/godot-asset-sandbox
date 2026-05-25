@@ -2,19 +2,29 @@ extends CharacterBody2D
 
 signal focused_item_changed(item)
 signal interacted_with_item(item)
+signal health_changed(current_health, max_health)
+signal defeated
 
 @export var speed: float = 180.0
 @export var bullet_scene: PackedScene
 @export var fire_cooldown: float = 0.22
 @export var muzzle_flash_time: float = 0.07
+@export var max_health: int = 5
+@export var damage_cooldown: float = 0.75
 
 var _focused_item: Node = null
 var _aim_direction: Vector2 = Vector2.UP
 var _cooldown_remaining: float = 0.0
 var _flash_remaining: float = 0.0
+var _damage_cooldown_remaining: float = 0.0
+var _current_health: int
 
 @onready var muzzle: Marker2D = $Muzzle
 @onready var muzzle_flash: Polygon2D = $Muzzle/MuzzleFlash
+
+func _ready() -> void:
+	_current_health = max_health
+	health_changed.emit(_current_health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -26,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		rotation = direction.angle() + PI / 2.0
 
 	_cooldown_remaining = maxf(_cooldown_remaining - delta, 0.0)
+	_damage_cooldown_remaining = maxf(_damage_cooldown_remaining - delta, 0.0)
 	_update_muzzle_flash(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -61,6 +72,18 @@ func _try_fire() -> void:
 	bullet.setup(muzzle.global_position, _aim_direction)
 	_show_muzzle_flash()
 	_cooldown_remaining = fire_cooldown
+
+func take_damage(amount: int) -> void:
+	if amount <= 0 or _damage_cooldown_remaining > 0.0 or _current_health <= 0:
+		return
+
+	_current_health = maxi(_current_health - amount, 0)
+	_damage_cooldown_remaining = damage_cooldown
+	health_changed.emit(_current_health, max_health)
+
+	if _current_health == 0:
+		defeated.emit()
+		set_physics_process(false)
 
 func _show_muzzle_flash() -> void:
 	muzzle_flash.visible = true

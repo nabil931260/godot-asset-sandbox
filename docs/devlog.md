@@ -53,3 +53,7 @@ Added a simple malfunctioning drone enemy and placed two test drones near the ac
 ## 2026-05-25 - First wave spawner
 
 Replaced the hand-placed test drones with a tiny wave loop. Waves start automatically, spawn drones from the active doors, and advance after the room is cleared. The HUD now shows the current wave and remaining drones.
+
+## 2026-05-25 - Health and fail state
+
+Added player hull health, contact damage from drones, and a simple fail state. The HUD now shows hull status, and the wave loop stops when the player goes down.
