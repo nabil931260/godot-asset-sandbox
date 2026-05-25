@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://playerassetrefresher"]
+[gd_scene load_steps=5 format=3 uid="uid://playerassetrefresher"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_player_script"]
 [ext_resource type="Texture2D" path="res://assets/sprites/player.svg" id="2_player_sprite"]
+[ext_resource type="PackedScene" path="res://scenes/bullet.tscn" id="3_bullet_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 15.0
@@ -11,6 +12,7 @@ radius = 54.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_player_script")
+bullet_scene = ExtResource("3_bullet_scene")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_player_sprite")
@@ -23,6 +25,9 @@ zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 enabled = true
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -26)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 0

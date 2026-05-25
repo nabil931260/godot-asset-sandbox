@@ -29,3 +29,7 @@ I am saving the terminal upgrade idea for later. It makes sense as an upgrade st
 ## 2026-05-25 - Arena pass
 
 Started shaping the sandbox into a holdout room. Added two active door markers, two reserved door positions for later waves, and a couple of cover pieces so the room is not just an empty rectangle. I also rewrote the object descriptions so the crate, terminal, and poster read more like actual room props.
+
+## 2026-05-25 - Shooting pass
+
+Added the first version of the player weapon. Space fires a small projectile from a muzzle marker in the player's current facing direction. There is a short cooldown so it feels like a simple blaster instead of a debug button.
