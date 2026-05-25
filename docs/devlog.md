@@ -73,3 +73,7 @@ Added small feedback touches: the HUD now reports upgrade purchases or missing s
 ## 2026-05-25 - First balance pass
 
 Softened the early loop after adding the full combat flow. Drones move a little slower, the player starts with one more hull point, early upgrades cost less, and wave rewards are tuned so the first upgrade is reachable without grinding.
+
+## 2026-05-25 - Door spawn warnings
+
+Added a short warning flash on active doors before a drone appears. This makes the wave spawns feel less sudden while keeping the implementation simple.

@@ -6,6 +6,7 @@ extends Node2D
 @export var weapon_upgrade_cost: int = 3
 @export var fire_rate_upgrade_cost: int = 3
 @export var hull_upgrade_cost: int = 3
+@export var door_warning_time: float = 0.35
 
 @onready var player = $Player
 @onready var hud = $HUD
@@ -24,6 +25,10 @@ var _wave_active: bool = false
 var _game_over: bool = false
 var _scrap: int = 0
 var _upgrade_terminal_open: bool = false
+var _warning_door: Marker2D = null
+var _warning_timer: float = 0.0
+var _door_base_color := Color(0.78, 0.2, 0.16, 1)
+var _door_warning_color := Color(1, 0.78, 0.18, 1)
 
 func _ready() -> void:
 	player.focused_item_changed.connect(_on_player_focused_item_changed)
@@ -107,25 +112,47 @@ func _update_spawning(delta: float) -> void:
 		_wave_active = false
 		return
 
+	if _warning_door != null:
+		_warning_timer -= delta
+		if _warning_timer <= 0.0:
+			_spawn_enemy_at_door(_warning_door)
+			_reset_door_warning(_warning_door)
+			_warning_door = null
+			_spawns_remaining -= 1
+			_spawn_timer = time_between_spawns
+		return
+
 	_spawn_timer -= delta
 	if _spawn_timer > 0.0:
 		return
 
-	_spawn_enemy()
-	_spawns_remaining -= 1
-	_spawn_timer = time_between_spawns
+	_warning_door = _get_next_spawn_door()
+	_warning_timer = door_warning_time
+	_show_door_warning(_warning_door)
 
-func _spawn_enemy() -> void:
-	if _game_over:
-		return
-
+func _get_next_spawn_door() -> Marker2D:
 	var door := active_doors[_next_door_index % active_doors.size()]
 	_next_door_index += 1
+	return door
+
+func _spawn_enemy_at_door(door: Marker2D) -> void:
+	if _game_over:
+		return
 
 	var enemy := enemy_scene.instantiate()
 	enemy.global_position = door.global_position + door.global_transform.y * 58.0
 	enemy.tree_exited.connect(_on_enemy_removed)
 	add_child(enemy)
+
+func _show_door_warning(door: Marker2D) -> void:
+	var visual := door.get_node_or_null("DoorVisual") as ColorRect
+	if visual != null:
+		visual.color = _door_warning_color
+
+func _reset_door_warning(door: Marker2D) -> void:
+	var visual := door.get_node_or_null("DoorVisual") as ColorRect
+	if visual != null:
+		visual.color = _door_base_color
 
 func _on_enemy_removed() -> void:
 	_enemies_remaining = maxi(_enemies_remaining - 1, 0)

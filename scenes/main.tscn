@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fcw4gi8mytcp" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_terminal.svg" id="5_terminal_sprite"]
 [ext_resource type="Texture2D" path="res://assets/sprites/item_poster.svg" id="6_poster_sprite"]
-[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="7_enemy_scene"]
+[ext_resource type="PackedScene" uid="uid://holdoutenemy" path="res://scenes/enemy.tscn" id="7_enemy_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_wide"]
 size = Vector2(720, 24)
