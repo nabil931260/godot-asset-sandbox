@@ -69,3 +69,7 @@ Added a small restart flow so the game-over screen is not a dead end. When the p
 ## 2026-05-25 - Feedback pass
 
 Added small feedback touches: the HUD now reports upgrade purchases or missing scrap, the player flashes when hit, and drones flash when damaged. This makes the existing combat and terminal loops easier to read without adding a new system.
+
+## 2026-05-25 - First balance pass
+
+Softened the early loop after adding the full combat flow. Drones move a little slower, the player starts with one more hull point, early upgrades cost less, and wave rewards are tuned so the first upgrade is reachable without grinding.

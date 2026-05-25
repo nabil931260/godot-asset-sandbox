@@ -9,7 +9,7 @@ signal defeated
 @export var bullet_scene: PackedScene
 @export var fire_cooldown: float = 0.22
 @export var muzzle_flash_time: float = 0.07
-@export var max_health: int = 5
+@export var max_health: int = 6
 @export var damage_cooldown: float = 0.75
 @export var weapon_damage: int = 1
 @export var damage_flash_time: float = 0.12
