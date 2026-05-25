@@ -33,6 +33,11 @@ func _ready() -> void:
 	_start_next_wave()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _game_over and event.is_action_pressed("restart"):
+		get_viewport().set_input_as_handled()
+		get_tree().reload_current_scene()
+		return
+
 	if _game_over or not _upgrade_terminal_open:
 		return
 

@@ -61,3 +61,7 @@ Added player hull health, contact damage from drones, and a simple fail state. T
 ## 2026-05-25 - Terminal upgrades
 
 Turned the room terminal into a small upgrade station. Clearing waves now pays scrap, and interacting with the terminal lets the player buy weapon damage, faster firing, or extra hull with number keys.
+
+## 2026-05-25 - Restart after failure
+
+Added a small restart flow so the game-over screen is not a dead end. When the player loses the room, pressing R reloads the current scene.

@@ -66,5 +66,5 @@ func update_health(current_health: int, max_health: int) -> void:
 func update_scrap(scrap: int) -> void:
 	scrap_label.text = "Scrap %d" % scrap
 
-func show_game_over(is_visible: bool) -> void:
-	game_over_label.visible = is_visible
+func show_game_over(should_show: bool) -> void:
+	game_over_label.visible = should_show

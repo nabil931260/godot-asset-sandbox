@@ -23,6 +23,7 @@ This is intentionally modest. I kept the scope small so the Godot workflow stays
 - `1`: upgrade weapon damage at the terminal
 - `2`: upgrade fire rate at the terminal
 - `3`: upgrade hull at the terminal
+- `R`: restart after game over
 
 ## Practiced Concepts
 
