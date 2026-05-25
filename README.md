@@ -40,15 +40,3 @@ scripts/              Focused GDScript files
 ## Run
 
 Open this folder in Godot and run `scenes/main.tscn`.
-
-## Manual Verification
-
-- Project opens in Godot 4.
-- `scenes/main.tscn` runs without script errors.
-- Player moves with WASD or arrow keys.
-- A prompt appears when the player approaches an item.
-- Pressing `E` updates the HUD with item details.
-
-## Notes
-
-This repo is intentionally modest. I wanted the project to show the kind of engine work I was reviewing rather than hide it behind a larger game loop.
