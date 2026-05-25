@@ -37,3 +37,7 @@ Added the first version of the player weapon. Space fires a small projectile fro
 ## 2026-05-25 - Shooting feel pass
 
 Tuned the first weapon pass. Bullets are faster and shaped more like small energy bolts, the starting aim now matches the player's idle facing direction, and firing shows a quick muzzle flash so the shot reads better even before enemies are in.
+
+## 2026-05-25 - HUD control text
+
+Updated the default HUD copy so the room tells the player about Space to shoot. The inspect prompt is shorter now too, which should leave more room once wave and health text land.

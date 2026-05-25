@@ -15,7 +15,7 @@ func show_prompt(item) -> void:
 		return
 
 	var data: Dictionary = item.get_display_data()
-	prompt_label.text = "Press E to inspect %s" % data.get("title", "asset")
+	prompt_label.text = "E: inspect %s" % data.get("title", "asset")
 	prompt_label.visible = true
 
 func hide_prompt() -> void:
@@ -24,7 +24,7 @@ func hide_prompt() -> void:
 func show_item_details(data: Dictionary) -> void:
 	if data.is_empty():
 		title_label.text = "No asset selected"
-		type_label.text = "Move near an object and press E."
+		type_label.text = "Move: WASD / Arrows    Shoot: Space"
 		notes_label.text = ""
 		return
 

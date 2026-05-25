@@ -18,7 +18,7 @@ offset_right = 150.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press E to inspect"
+text = "E: inspect"
 horizontal_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="."]
@@ -50,7 +50,7 @@ text = "No asset selected"
 
 [node name="TypeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-text = "Move near an object and press E."
+text = "Move: WASD / Arrows    Shoot: Space"
 
 [node name="NotesLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
