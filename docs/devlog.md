@@ -57,3 +57,7 @@ Replaced the hand-placed test drones with a tiny wave loop. Waves start automati
 ## 2026-05-25 - Health and fail state
 
 Added player hull health, contact damage from drones, and a simple fail state. The HUD now shows hull status, and the wave loop stops when the player goes down.
+
+## 2026-05-25 - Terminal upgrades
+
+Turned the room terminal into a small upgrade station. Clearing waves now pays scrap, and interacting with the terminal lets the player buy weapon damage, faster firing, or extra hull with number keys.

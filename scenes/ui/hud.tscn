@@ -43,6 +43,15 @@ offset_right = 150.0
 offset_bottom = 42.0
 text = "Hull --/--"
 
+[node name="ScrapLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 42.0
+offset_right = 150.0
+offset_bottom = 66.0
+text = "Scrap 0"
+
 [node name="GameOverLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false

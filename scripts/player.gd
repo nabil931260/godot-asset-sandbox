@@ -11,6 +11,7 @@ signal defeated
 @export var muzzle_flash_time: float = 0.07
 @export var max_health: int = 5
 @export var damage_cooldown: float = 0.75
+@export var weapon_damage: int = 1
 
 var _focused_item: Node = null
 var _aim_direction: Vector2 = Vector2.UP
@@ -69,6 +70,7 @@ func _try_fire() -> void:
 
 	var bullet := bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
+	bullet.damage = weapon_damage
 	bullet.setup(muzzle.global_position, _aim_direction)
 	_show_muzzle_flash()
 	_cooldown_remaining = fire_cooldown
@@ -84,6 +86,17 @@ func take_damage(amount: int) -> void:
 	if _current_health == 0:
 		defeated.emit()
 		set_physics_process(false)
+
+func upgrade_weapon_damage() -> void:
+	weapon_damage += 1
+
+func upgrade_fire_rate() -> void:
+	fire_cooldown = maxf(fire_cooldown - 0.04, 0.1)
+
+func upgrade_hull() -> void:
+	max_health += 1
+	_current_health = mini(_current_health + 1, max_health)
+	health_changed.emit(_current_health, max_health)
 
 func _show_muzzle_flash() -> void:
 	muzzle_flash.visible = true

@@ -7,12 +7,14 @@ extends CanvasLayer
 @onready var wave_label: Label = %WaveLabel
 @onready var health_label: Label = %HealthLabel
 @onready var game_over_label: Label = %GameOverLabel
+@onready var scrap_label: Label = %ScrapLabel
 
 func _ready() -> void:
 	hide_prompt()
 	show_item_details({})
 	update_wave_status(0, 0)
 	update_health(0, 0)
+	update_scrap(0)
 	show_game_over(false)
 
 func show_prompt(item) -> void:
@@ -38,6 +40,15 @@ func show_item_details(data: Dictionary) -> void:
 	type_label.text = "Type: %s" % data.get("type", "Unknown")
 	notes_label.text = data.get("notes", "")
 
+func show_upgrade_station(scrap: int, costs: Dictionary) -> void:
+	title_label.text = "Room Control Terminal"
+	type_label.text = "Scrap: %d" % scrap
+	notes_label.text = "1 Weapon charge (%d)\n2 Faster blaster (%d)\n3 Hull plating (%d)" % [
+		costs.get("weapon", 0),
+		costs.get("fire_rate", 0),
+		costs.get("hull", 0),
+	]
+
 func update_wave_status(wave_number: int, enemies_remaining: int) -> void:
 	if wave_number <= 0:
 		wave_label.text = "Wave --    Drones --"
@@ -51,6 +62,9 @@ func update_health(current_health: int, max_health: int) -> void:
 		return
 
 	health_label.text = "Hull %d/%d" % [current_health, max_health]
+
+func update_scrap(scrap: int) -> void:
+	scrap_label.text = "Scrap %d" % scrap
 
 func show_game_over(is_visible: bool) -> void:
 	game_over_label.visible = is_visible

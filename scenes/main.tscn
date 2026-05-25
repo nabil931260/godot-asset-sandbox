@@ -168,8 +168,8 @@ item_notes = "The latch is bent and the good supplies are gone. The reinforced l
 [node name="TerminalAsset" parent="." unique_id=1042485667 instance=ExtResource("3_item_scene")]
 position = Vector2(230, -92)
 item_title = "Room Control Terminal"
-item_type = "Interactive Prop"
-item_notes = "The screen keeps flashing EXTERNAL LOCKDOWN ACTIVE. The upgrade menu is still locked, but the wiring looks salvageable."
+item_type = "Upgrade Station"
+item_notes = "The terminal can still route power into the blaster and hull plating. Clear waves to collect scrap, then press 1, 2, or 3 here to upgrade."
 
 [node name="Sprite2D" parent="TerminalAsset" index="0"]
 texture = ExtResource("5_terminal_sprite")
