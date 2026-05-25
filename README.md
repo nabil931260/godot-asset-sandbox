@@ -1,17 +1,28 @@
-# Godot Asset Sandbox
+# Workshop Holdout
 
-A compact Godot 4 refresher project focused on practicing scene composition, input handling, collision, interaction prompts, UI feedback, and asset iteration.
+A compact Godot 4 refresher project built around a small single-room survival loop.
 
-This is a sandbox, not a full game. I kept the scope small so the engine workflow stays visible and easy to review.
+The player is trapped in a workshop during a drone breach. Drones enter through the room doors in waves, the player clears them with a basic blaster, and the room terminal can spend scrap on small upgrades.
+
+This is intentionally modest. I kept the scope small so the Godot workflow stays visible: scenes, signals, input actions, collision, HUD updates, enemy behavior, and a little progression.
 
 ## What It Does
 
-The scene is a small top-down workshop/gallery. The player can move around, approach a few objects, and press `E` to inspect them. Each object uses the same reusable interactable scene with different exported metadata and simple placeholder art.
+- Spawns enemy waves from room doors.
+- Lets the player move, shoot, and take damage.
+- Tracks hull health, wave number, remaining drones, and scrap.
+- Awards scrap after clearing waves.
+- Uses the terminal as a simple upgrade station.
+- Keeps a few inspectable room props for flavor and context.
 
 ## Controls
 
 - `WASD` or arrow keys: move
-- `E`: inspect the focused asset
+- `Space`: shoot
+- `E`: inspect/use focused room object
+- `1`: upgrade weapon damage at the terminal
+- `2`: upgrade fire rate at the terminal
+- `3`: upgrade hull at the terminal
 
 ## Practiced Concepts
 
@@ -19,9 +30,11 @@ The scene is a small top-down workshop/gallery. The player can move around, appr
 - `CharacterBody2D` movement and collision
 - `Area2D`-based interaction detection
 - Exported GDScript properties for per-instance metadata
-- Signal wiring between player, main scene, and HUD
+- Signal wiring between player, enemies, main scene, and HUD
+- Enemy wave spawning and simple chase behavior
+- Player health, damage cooldown, and game-over state
+- Terminal upgrade flow using input actions
 - Basic `CanvasLayer` HUD layout
-- Small original SVG placeholder assets
 
 ## Project Structure
 
