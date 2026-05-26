@@ -1,41 +1,66 @@
 # Workshop Holdout
 
-A compact Godot 4 refresher project built around a small single-room survival loop.
+Workshop Holdout is a compact Godot 4 single-room survival prototype. The player is trapped in a workshop during a drone breach, clearing waves of enemies while using a room terminal to buy small upgrades with scrap.
 
-The player is trapped in a workshop during a drone breach. Drones enter through the room doors in waves, the player clears them with a basic blaster, and the room terminal can spend scrap on small upgrades.
+The scope is intentionally modest. I kept the game loop small so the Godot workflow stays visible: scenes, signals, input actions, collision, HUD updates, enemy behavior, and a little progression.
 
-This is intentionally modest. I kept the scope small so the Godot workflow stays visible: scenes, signals, input actions, collision, HUD updates, enemy behavior, and a little progression.
+## Screenshots
 
-## What It Does
+![Workshop room view](docs/images/workshop-room.png)
 
-- Spawns enemy waves from room doors.
-- Lets the player move, shoot, and take damage.
-- Tracks hull health, wave number, remaining drones, and scrap.
-- Awards scrap after clearing waves.
-- Uses the terminal as a simple upgrade station.
-- Keeps a few inspectable room props for flavor and context.
+![Terminal upgrade menu](docs/images/terminal-upgrades.png)
+
+![Wave combat](docs/images/wave-combat.png)
+
+## Current Build
+
+- Single-room arena with blocked movement areas and inspectable props.
+- Enemy waves that spawn from workshop doors.
+- Door warning flashes before enemies enter.
+- Basic blaster shooting with muzzle flash.
+- Enemy hit feedback and small death effects.
+- Player hull health, damage cooldown, and game-over restart.
+- Scrap rewards after cleared waves.
+- Upgrade terminal for weapon damage, fire rate, and hull plating.
+- HUD for wave count, drone count, hull, scrap, prompts, status messages, and item details.
+- Heavier drones begin appearing from wave 3.
 
 ## Controls
 
-- `WASD` or arrow keys: move
-- `Space`: shoot
-- `E`: inspect/use focused room object
-- `1`: upgrade weapon damage at the terminal
-- `2`: upgrade fire rate at the terminal
-- `3`: upgrade hull at the terminal
-- `R`: restart after game over
+| Action | Input |
+| --- | --- |
+| Move | `WASD` or arrow keys |
+| Shoot | `Space` |
+| Inspect / use focused object | `E` |
+| Upgrade weapon damage | `1` at the terminal |
+| Upgrade fire rate | `2` at the terminal |
+| Upgrade hull | `3` at the terminal |
+| Restart after game over | `R` |
+
+## Upgrade Terminal
+
+The room control terminal opens the upgrade menu when inspected with `E`.
+
+Available upgrades:
+
+- Weapon charge: increases blaster damage.
+- Faster blaster: reduces shot cooldown.
+- Hull plating: increases max hull and repairs one hull point.
+
+Scrap is awarded after clearing each wave.
 
 ## Practiced Concepts
 
-- Godot scene composition with instanced scenes
-- `CharacterBody2D` movement and collision
-- `Area2D`-based interaction detection
-- Exported GDScript properties for per-instance metadata
-- Signal wiring between player, enemies, main scene, and HUD
-- Enemy wave spawning and simple chase behavior
-- Player health, damage cooldown, and game-over state
-- Terminal upgrade flow using input actions
-- Basic `CanvasLayer` HUD layout
+- Godot scene composition with instanced scenes.
+- `CharacterBody2D` player and enemy movement.
+- Input map actions for movement, shooting, interaction, upgrades, and restart.
+- `Area2D` interaction detection.
+- Exported GDScript properties for per-instance metadata.
+- Signal wiring between the player, enemies, main scene, and HUD.
+- Enemy wave spawning with door warning feedback.
+- Player health, damage cooldowns, hit flash, and game-over state.
+- Simple progression through terminal upgrades.
+- `CanvasLayer` HUD updates.
 
 ## Project Structure
 
@@ -51,18 +76,24 @@ scripts/              Focused GDScript files
 
 - Godot 4.x
 
-## Run
+The project currently uses a Godot 4.6 project configuration.
 
-Open this folder in Godot and run `scenes/main.tscn`.
+## Run Locally
+
+1. Clone the repo.
+2. Open the project folder in Godot.
+3. Run `scenes/main.tscn`.
 
 ## Manual Test Checklist
 
-Quick things I check after changes:
-
-- Move around the room and make sure cover blocks movement.
-- Shoot drones and confirm hit/death effects show.
+- Move around the workshop and confirm walls/cover block movement.
+- Shoot drones and confirm hit/death feedback.
 - Clear a wave and confirm the next wave starts.
-- Watch doors flash before drones spawn.
-- Reach wave 3 and confirm a heavier drone appears.
-- Clear a wave, use the terminal, and buy one upgrade.
-- Let the player lose all hull, then press `R` to restart.
+- Watch door warning flashes before drones spawn.
+- Reach wave 3 and confirm heavier drones can appear.
+- Clear a wave, inspect the terminal, and buy an upgrade.
+- Let hull reach zero and press `R` to restart.
+
+## Status
+
+This is a small portfolio/refresher project, not a full game. The current version focuses on a complete, playable loop with clear Godot systems rather than a large content scope.
