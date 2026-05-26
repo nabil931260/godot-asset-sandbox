@@ -54,3 +54,15 @@ scripts/              Focused GDScript files
 ## Run
 
 Open this folder in Godot and run `scenes/main.tscn`.
+
+## Manual Test Checklist
+
+Quick things I check after changes:
+
+- Move around the room and make sure cover blocks movement.
+- Shoot drones and confirm hit/death effects show.
+- Clear a wave and confirm the next wave starts.
+- Watch doors flash before drones spawn.
+- Reach wave 3 and confirm a heavier drone appears.
+- Clear a wave, use the terminal, and buy one upgrade.
+- Let the player lose all hull, then press `R` to restart.

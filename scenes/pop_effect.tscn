@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://popfx"]
+[gd_scene format=3 uid="uid://popfx"]
 
 [ext_resource type="Script" path="res://scripts/pop_effect.gd" id="1_pop_script"]
 

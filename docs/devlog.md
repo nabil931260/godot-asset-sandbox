@@ -81,3 +81,7 @@ Added a short warning flash on active doors before a drone appears. This makes t
 ## 2026-05-25 - Heavy drones and pop effects
 
 Added a heavier drone variant that starts showing up after the early waves. Also added small pop effects for bullet impacts and drone destruction so hits and kills read more clearly.
+
+## 2026-05-25 - Manual test notes
+
+Added a short README checklist for the main things I test after changes. It is not a full QA plan, just a quick pass to keep the current loop honest.
