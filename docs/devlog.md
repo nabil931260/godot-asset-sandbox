@@ -77,3 +77,7 @@ Softened the early loop after adding the full combat flow. Drones move a little 
 ## 2026-05-25 - Door spawn warnings
 
 Added a short warning flash on active doors before a drone appears. This makes the wave spawns feel less sudden while keeping the implementation simple.
+
+## 2026-05-25 - Heavy drones and pop effects
+
+Added a heavier drone variant that starts showing up after the early waves. Also added small pop effects for bullet impacts and drone destruction so hits and kills read more clearly.

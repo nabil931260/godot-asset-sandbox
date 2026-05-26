@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://ds6h3sv2bepm2"]
+[gd_scene load_steps=5 format=3 uid="uid://ds6h3sv2bepm2"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_bullet_script"]
 [ext_resource type="Texture2D" path="res://assets/sprites/bullet.svg" id="2_bullet_sprite"]
+[ext_resource type="PackedScene" path="res://scenes/pop_effect.tscn" id="3_pop_effect"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 radius = 6.0
@@ -10,6 +11,7 @@ radius = 6.0
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_bullet_script")
+impact_effect_scene = ExtResource("3_pop_effect")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bullet_sprite")

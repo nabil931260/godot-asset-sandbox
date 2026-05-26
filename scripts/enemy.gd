@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_health: int = 2
 @export var contact_damage: int = 1
 @export var hit_flash_time: float = 0.08
+@export var death_effect_scene: PackedScene
 
 var _health: int
 var _target: Node2D
@@ -36,6 +37,7 @@ func take_damage(amount: int) -> void:
 	_show_hit_flash()
 
 	if _health <= 0:
+		_spawn_death_effect()
 		queue_free()
 
 func _on_contact_area_body_entered(body: Node2D) -> void:
@@ -53,3 +55,11 @@ func _update_hit_flash(delta: float) -> void:
 	_hit_flash_remaining = maxf(_hit_flash_remaining - delta, 0.0)
 	if _hit_flash_remaining == 0.0:
 		body.color = Color(0.86, 0.16, 0.16, 1)
+
+func _spawn_death_effect() -> void:
+	if death_effect_scene == null:
+		return
+
+	var effect := death_effect_scene.instantiate()
+	get_tree().current_scene.add_child(effect)
+	effect.setup(global_position, body.color)

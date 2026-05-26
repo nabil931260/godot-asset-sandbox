@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
+@export var heavy_enemy_scene: PackedScene
 @export var time_between_spawns: float = 0.45
 @export var time_between_waves: float = 1.5
 @export var weapon_upgrade_cost: int = 3
@@ -140,6 +141,9 @@ func _spawn_enemy_at_door(door: Marker2D) -> void:
 		return
 
 	var enemy := enemy_scene.instantiate()
+	if _should_spawn_heavy():
+		enemy = heavy_enemy_scene.instantiate()
+
 	enemy.global_position = door.global_position + door.global_transform.y * 58.0
 	enemy.tree_exited.connect(_on_enemy_removed)
 	add_child(enemy)
@@ -164,6 +168,12 @@ func _on_enemy_removed() -> void:
 
 func _get_wave_size(wave_number: int) -> int:
 	return 2 + min(wave_number - 1, 4)
+
+func _should_spawn_heavy() -> bool:
+	if heavy_enemy_scene == null or _wave_number < 3:
+		return false
+
+	return _spawns_remaining % 3 == 0
 
 func _award_wave_scrap() -> void:
 	_scrap += 2 + floori(_wave_number / 2.0)
